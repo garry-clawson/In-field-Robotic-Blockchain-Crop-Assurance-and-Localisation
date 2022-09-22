@@ -41,9 +41,6 @@ The full bill of materials depends on each configuration and for more details pl
 
 A fully documented assembly tutorial for the OpenScout with a 'Lazy Susan' revolute hinge is available below. Additionally, a comprehensive and fully annotated [Assembly Manual](Documentation/CAD_Files/Instruction_Manual/InstructionManual.pdf) with step by step 3D projections of the hardware build has been made available to print out. All associated CAD files and schematics are available in the [Documentation](Documentation) directory.
 
-[OpenScout robot with 'Lazy Susan' revolute hinge](Hardware/robot_with_lazy_susan_bearing/README.md)
-
-
 ## How to Install and Run the Assurance and Localisation Project
 This installation guide is a quick start to get you onto the right path to build you own smart contracts. This will take you through each of the steps required to replicate the vision localisation pipeline. Web3 libraries and several dependencies will be required as well as supporting tool chains. These should be widely available for your chosen operating system. 
 
@@ -211,7 +208,7 @@ CID:  QmcBRbromnTm4dGRzrH2mFJCCwFBxBwhyegRoDGefdbC62
 For this proof-of-concept no optimization has been completed. We are currently using a very simple list structure and have to remember what image referred to what CID. In Solidity there is no simple way to search a list for as each step will incur a Gas cost. Other data structures will offer a better way to do this, but for a proof-of-concept, it is fine! 
 
 
-### 7. Aligning an image
+### 7a. Aligning an image
 
 The image alignment process was inspired by the [pyimagesearch tutorial](https://pyimagesearch.com/2020/08/31/image-alignment-and-registration-with-opencv/) for document image alignment and registration. The concept of aligning infield ground stones and using the same type of registration is compelling as a low cost method to localize using only a simple vision system. 
 
@@ -233,9 +230,23 @@ Several more 'template' and 'current' ground stone images are available in the `
 
 If the image is successfully able to be aligned then a ```Success...``` message will be shown. The current system will attempt to align any image so badly aligned images will look very bad. 
 
-In our example, the newly current taken ground stone image is heavily rotated and banked to show the full alignment process. In practice, as the robot moves up and down a row, the newly taken image will be very similar (i.e. directly overhead) to the template image taken during seeding. 
+In our example, the newly current taken ground stone image is heavily rotated and banked to show the full alignment process. In practice, as the robot moves up and down a row, the newly taken image will be very similar (i.e. directly overhead) to the template image taken during seeding. An aligned kimage overlaid to its template images is shown below. 
+
+<p align="center" width="100%">
+    <img src="Documentation/Images/aligned_rock.png">
+</p>
+
 
 Since this ground stone image (given as an example) is successful, we shall now upload it to IPFS. Further images to test alignment are available in the ```image_registration > images > additional_images``` folder. 
+
+### 7b. Template Matching
+
+Once an image has been aligned. To identify if it matches the original template image we need ot perfomr some sort of matching. Here, we use a process called Template Matching, inspired by the [pyimagesearch tutorial](https://pyimagesearch.com/2021/03/22/opencv-template-matching-cv2-matchtemplate/). The benefit if template matching is that it is quick and performs a pixel wise assessment of any matches it sees from a template image (such as a logo or in our case, a set of rocks), to a base photo, in our case, the aligned image. This template matching can take place across a single image or across a series of images. Here, we perform this across a series of images. The output of this template matching is shown below:
+
+<p align="center" width="100%">
+    <img src="Documentation/Images/template_matching.jpg">
+</p>
+
 
 ### 8. Upload image to IPFS
 
