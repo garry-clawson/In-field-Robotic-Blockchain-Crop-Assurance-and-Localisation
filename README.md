@@ -13,7 +13,6 @@ This project is intended to be used, extended and developed upon by undergraduat
 ## Table of Contents
 
 * [OpenScout Mobile Robot](#OpenScout-Mobile-Robot)
-* [OpenScout Demonstration](#OpenScout-Demonstration)
 * [Building your own OpenScout](#Building-your-own-OpenScout)
 * [How to Install and Run the Assurance and Localisation Project](#How-to-Install-and-Run-the-Assurance-and-Localisation-Project)
 * [How to Use the Project](#how-to-use-the-project)
@@ -31,11 +30,6 @@ OpenScout is made of standard sizes aluminium extrusions making it very modular.
     <img width="45%" height="350" src="Documentation/Images/openscout.jpeg">
 </p>
 
-## OpenScout Demonstration
-
-Demonstrations showing a variety of different mobility aspects can be found in the [Demonstrations](Demonstrations) directory. The below demonstration shows OpenScout with a 'lazy Susan' revolute hinge successfully traversing uneven terrain with circa 40 mm divots.
-
-https://user-images.githubusercontent.com/44243266/164105180-839fc627-df63-4446-af7d-90f431a007b9.mp4
 
 ## Building your own OpenScout
 Materials used:
